@@ -12,7 +12,8 @@ import {
     SyntaxHighlighter,
     Interval,
     Markdown,
-    Upload
+    Upload,
+    Tabs
 } from '../src';
 
 
@@ -298,6 +299,24 @@ class Controller extends Component {
 
 ReactDOM.render(<Controller/>, mountNode);`
 
+const TabsExample = `
+const properties = {
+  tabs: [
+    {'label': 'Control', 'icon': 'https://images-plotly.imgix.net/static/marketing/dash/direct-control-icon.png?auto=compress&auto=format', 'value': 1},
+    {'label': 'Symbols', 'icon': 'https://images-plotly.imgix.net/static/marketing/dash/composable-icon.png?auto=compress&auto=format', 'value': 2},
+    {'label': 'Other options', 'value': 3},
+    {'icon': 'https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg', 'value': 4},
+  ],
+  value: 1,
+  id: 'tabs',
+  vertical: false,
+  style: {
+    'borderRight': 'thin lightgrey solid',
+    'textAlign': 'left'
+  }
+};
+
+ReactDOM.render(<Tabs {...properties}/>, mountNode);`
 
 
 const examples = [
@@ -311,7 +330,8 @@ const examples = [
     {name: 'Dropdown', code: DropdownExample},
     {name: 'Slider', code: SliderExample},
     {name: 'RangeSlider', code: RangeSliderExample},
-    {name: 'Input', code: InputExample}
+    {name: 'Input', code: InputExample},
+    {name: 'Tabs', code: TabsExample}
 ];
 
 class Demo extends Component {
@@ -326,7 +346,7 @@ class Demo extends Component {
                             <h3>{example.name}</h3>
                             <Playground
                                 codeText={example.code}
-                                scope={{Component, React, ReactDOM, Checklist, Dropdown, Graph, Input, RadioItems, RangeSlider, Slider, SyntaxHighlighter, Interval, Markdown, Upload}}
+                                scope={{Component, React, ReactDOM, Checklist, Dropdown, Graph, Input, RadioItems, RangeSlider, Slider, SyntaxHighlighter, Interval, Markdown, Upload, Tabs}}
                                 noRender={false}
                                 theme={'xq-light'}
                             />

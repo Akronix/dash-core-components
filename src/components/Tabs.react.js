@@ -8,7 +8,8 @@ const STYLES = {
 function Tab(props) {
     let style = {
         'borderLeft': STYLES.border,
-
+        'display': 'flex',
+        'alignItems': 'center',
         'position': 'relative',
         'paddingTop': 10,
         'paddingBottom': 10,
@@ -19,7 +20,6 @@ function Tab(props) {
 
     if (props.vertical) {
         style = R.merge(style, {
-            'display': 'block',
             'borderTop': STYLES.border,
             'borderBottom': props.isLast ? STYLES.border : null,
             'borderLeft': props.isSelected ? 'rgb(68, 126, 255) 2px solid': STYLES.border,
@@ -28,7 +28,7 @@ function Tab(props) {
         });
     } else {
         style = R.merge(style, {
-            'display': 'inline-block',
+            'display': 'inline-flex',
             'borderRight': props.isLast ? STYLES.border : null,
             'borderTopLeftRadius': props.isFirst ? 2 : 0,
             'borderTopRightRadius': props.isLast ? 2 : 0,
@@ -42,28 +42,32 @@ function Tab(props) {
 
     return (
         <div style={style} onClick={props.onClick} key={props.value}>
+            {props.icon?
+              <img src={props.icon} alt={props.label} width="30px" height="30px"
+                style={{'marginRight': '7px'}}
+              />
+              : null}
+
             {props.label}
 
             {props.isSelected && !props.vertical ? <div style={{
                 'position': 'absolute',
-                'display': 'block',
                 'content': '',
                 'bottom': '-1px',
                 'height': '1px',
                 'left': 0,
                 'right': 0,
-                'background-color': 'white'
+                'backgroundColor': 'white'
             }}/> : null}
 
             {props.isSelected && props.vertical ? <div style={{
                 'position': 'absolute',
-                'display': 'block',
                 'content': '',
                 'height': '100%',
                 'width': '1px',
                 'right': '-1px',
                 'top': '0px',
-                'background-color': 'white'
+                'backgroundColor': 'white'
             }}/> : null}
 
         </div>
@@ -113,17 +117,22 @@ Tabs.propTypes = {
         label: PropTypes.string,
 
         /**
-         * The value of the checkbox. This value
+         * The tab's icon src
+         */
+        icon: PropTypes.string,
+
+        /**
+         * The value of the tab. This value
          * corresponds to the items specified in the
          * `values` property.
          */
-        value: PropTypes.string
+        value: PropTypes.number
     })),
 
     /**
      * The currently selected tab
      */
-    value: PropTypes.string,
+    value: PropTypes.number,
 
     /**
      * Whether or not the tabs are rendered vertically
