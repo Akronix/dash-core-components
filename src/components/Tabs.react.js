@@ -6,7 +6,7 @@ const STYLES = {
 };
 
 function Tab(props) {
-    let style = {
+    let defaultStyle = {
         'borderLeft': STYLES.border,
         'display': 'flex',
         'alignItems': 'center',
@@ -18,8 +18,9 @@ function Tab(props) {
         'backgroundColor': props.isSelected ? 'white' : 'rgb(253, 253, 253)'
     };
 
+
     if (props.vertical) {
-        style = R.merge(style, {
+        defaultStyle = R.merge(defaultStyle, {
             'borderTop': STYLES.border,
             'borderBottom': props.isLast ? STYLES.border : null,
             'borderLeft': props.isSelected ? 'rgb(68, 126, 255) 2px solid': STYLES.border,
@@ -27,7 +28,7 @@ function Tab(props) {
             'paddingLeft': '5px'
         });
     } else {
-        style = R.merge(style, {
+        defaultStyle = R.merge(defaultStyle, {
             'display': 'inline-flex',
             'borderRight': props.isLast ? STYLES.border : null,
             'borderTopLeftRadius': props.isFirst ? 2 : 0,
@@ -39,6 +40,8 @@ function Tab(props) {
             'paddingRight': 20
         });
     }
+
+    const style = R.merge(defaultStyle, props.style)
 
     return (
         <div style={style} onClick={props.onClick} key={props.value}>
@@ -56,8 +59,7 @@ function Tab(props) {
                 'bottom': '-1px',
                 'height': '1px',
                 'left': 0,
-                'right': 0,
-                'backgroundColor': 'white'
+                'right': 0
             }}/> : null}
 
             {props.isSelected && props.vertical ? <div style={{
@@ -66,14 +68,12 @@ function Tab(props) {
                 'height': '100%',
                 'width': '1px',
                 'right': '-1px',
-                'top': '0px',
-                'backgroundColor': 'white'
+                'top': '0px'
             }}/> : null}
 
         </div>
     )
 }
-
 
 function Tabs(props) {
     return (
@@ -81,7 +81,8 @@ function Tabs(props) {
             <div style={R.merge({
                 'borderBottom': props.vertical ? null : STYLES.border,
                 'borderRight': props.vertical ? STYLES.border : null,
-                'boxSizing': 'border-box'
+                'boxSizing': 'border-box',
+                'overflow': 'overlay'
             }, props.style)}>
                 {props.tabs.map((t, i) => {
                     return Tab(R.merge(t, {
@@ -90,7 +91,8 @@ function Tabs(props) {
                         onClick: () => props.setProps({value: t.value}),
                         isSelected: t.value === props.value,
                         nTabs: props.tabs.length,
-                        vertical: props.vertical
+                        vertical: props.vertical,
+                        style: R.merge(props.tabsStyle, t.style)
                     }));
                 })}
             </div>
@@ -106,6 +108,12 @@ Tabs.propTypes = {
      * Style object to be merged in with the parent level tabs
      */
     style: PropTypes.object,
+
+
+    /**
+     * Style object for each tab element
+     */
+    tabsStyle: PropTypes.object,
 
     /**
      * An array of options
@@ -126,7 +134,12 @@ Tabs.propTypes = {
          * corresponds to the items specified in the
          * `values` property.
          */
-        value: PropTypes.number
+        value: PropTypes.number,
+
+        /**
+         * Style object for this specific tab
+         */
+        style: PropTypes.object
     })),
 
     /**

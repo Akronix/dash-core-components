@@ -309,10 +309,17 @@ const properties = {
   ],
   value: 1,
   id: 'tabs',
-  vertical: false,
+  vertical: true,
   style: {
+    'height': '100vh',
     'borderRight': 'thin lightgrey solid',
-    'textAlign': 'left'
+    'textAlign': 'left',
+    'backgroundColor': '#072146'
+  },
+  tabsStyle : {
+    'backgroundColor': '#004481',
+    'color': 'white',
+    'margin': '5px'
   }
 };
 

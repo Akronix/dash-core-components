@@ -2378,6 +2378,13 @@
         "required": false,
         "description": "Style object to be merged in with the parent level tabs"
       },
+      "tabsStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Style object for each tab element"
+      },
       "tabs": {
         "type": {
           "name": "arrayOf",
@@ -2395,8 +2402,13 @@
                 "required": false
               },
               "value": {
-                "name": "string",
+                "name": "number",
                 "description": "The value of the tab. This value\ncorresponds to the items specified in the\n`values` property.",
+                "required": false
+              },
+              "style": {
+                "name": "object",
+                "description": "Style object for this specific tab",
                 "required": false
               }
             }
@@ -2407,7 +2419,7 @@
       },
       "value": {
         "type": {
-          "name": "string"
+          "name": "number"
         },
         "required": false,
         "description": "The currently selected tab"
