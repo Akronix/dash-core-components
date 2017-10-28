@@ -82,7 +82,7 @@ function Tabs(props) {
                 'borderBottom': props.vertical ? null : STYLES.border,
                 'borderRight': props.vertical ? STYLES.border : null,
                 'boxSizing': 'border-box',
-                'overflow': 'overlay'
+                'overflow': 'hidden'
             }, props.style)}>
                 {props.tabs.map((t, i) => {
                     return Tab(R.merge(t, {
