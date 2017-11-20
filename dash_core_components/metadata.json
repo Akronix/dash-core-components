@@ -2402,7 +2402,7 @@
                 "required": false
               },
               "value": {
-                "name": "number",
+                "name": "string",
                 "description": "The value of the tab. This value\ncorresponds to the items specified in the\n`values` property.",
                 "required": false
               },
@@ -2419,7 +2419,7 @@
       },
       "value": {
         "type": {
-          "name": "number"
+          "name": "string"
         },
         "required": false,
         "description": "The currently selected tab"

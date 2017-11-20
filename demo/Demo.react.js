@@ -302,12 +302,12 @@ ReactDOM.render(<Controller/>, mountNode);`
 const TabsExample = `
 const properties = {
   tabs: [
-    {'label': 'Control', 'icon': 'https://images-plotly.imgix.net/static/marketing/dash/direct-control-icon.png?auto=compress&auto=format', 'value': 1},
-    {'label': 'Symbols', 'icon': 'https://images-plotly.imgix.net/static/marketing/dash/composable-icon.png?auto=compress&auto=format', 'value': 2},
-    {'label': 'Other options', 'value': 3},
-    {'icon': 'https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg', 'value': 4},
+    {'label': 'Control', 'icon': 'https://images-plotly.imgix.net/static/marketing/dash/direct-control-icon.png?auto=compress&auto=format', 'value': '1'},
+    {'label': 'Symbols', 'icon': 'https://images-plotly.imgix.net/static/marketing/dash/composable-icon.png?auto=compress&auto=format', 'value': '2'},
+    {'label': 'Other options', 'value': '3'},
+    {'icon': 'https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg', 'value': '4'},
   ],
-  value: 1,
+  value: '2',
   id: 'tabs',
   vertical: true,
   style: {

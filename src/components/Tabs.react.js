@@ -134,7 +134,7 @@ Tabs.propTypes = {
          * corresponds to the items specified in the
          * `values` property.
          */
-        value: PropTypes.number,
+        value: PropTypes.string,
 
         /**
          * Style object for this specific tab
@@ -145,7 +145,7 @@ Tabs.propTypes = {
     /**
      * The currently selected tab
      */
-    value: PropTypes.number,
+    value: PropTypes.string,
 
     /**
      * Whether or not the tabs are rendered vertically
